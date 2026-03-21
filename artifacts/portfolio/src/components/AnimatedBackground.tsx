@@ -2,21 +2,21 @@ import { useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 
 const DARK_COLORS = [
-  "0, 230, 100",   // neon green (primary)
-  "0, 255, 140",   // bright green
-  "120, 255, 80",  // lime green
-  "80, 200, 120",  // soft green
-  "0, 200, 255",   // teal accent
-  "160, 80, 255",  // violet accent
+  "236, 72, 153",   // pink-500 (primary)
+  "244, 114, 182",  // pink-400
+  "168, 85, 247",   // violet-500
+  "139, 92, 246",   // violet-500 alt
+  "217, 70, 239",   // fuchsia-500
+  "192, 132, 252",  // violet-300
 ];
 
 const LIGHT_COLORS = [
-  "37, 99, 235",   // blue
-  "139, 92, 246",  // violet
-  "16, 185, 129",  // emerald
-  "236, 72, 153",  // pink
-  "245, 158, 11",  // amber
-  "6, 182, 212",   // cyan
+  "139, 92, 246",   // violet
+  "236, 72, 153",   // pink
+  "217, 70, 239",   // fuchsia
+  "167, 139, 250",  // violet-400
+  "248, 113, 113",  // red-400
+  "96, 165, 250",   // blue-400
 ];
 
 export function ParticleBackground() {
@@ -70,7 +70,7 @@ export function ParticleBackground() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${col}, ${p.opacity})`;
-        ctx.shadowBlur = isDark ? 16 : 8;
+        ctx.shadowBlur = isDark ? 18 : 8;
         ctx.shadowColor = `rgba(${col}, ${isDark ? 0.9 : 0.6})`;
         ctx.fill();
         ctx.shadowBlur = 0;

@@ -33,8 +33,8 @@ export function ContactSection() {
 
   const inputClass = `w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all ${
     isDark
-      ? "bg-white/5 border-white/10 text-white placeholder-white/30 focus:border-green-500/60 focus:shadow-[0_0_0_3px_rgba(0,230,100,0.1)]"
-      : "bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-blue-500/60 focus:shadow-[0_0_0_3px_rgba(37,99,235,0.1)]"
+      ? "bg-white/5 border-white/10 text-white placeholder-white/30 focus:border-pink-500/60 focus:shadow-[0_0_0_3px_rgba(236,72,153,0.1)]"
+      : "bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-violet-500/60 focus:shadow-[0_0_0_3px_rgba(139,92,246,0.1)]"
   }`;
 
   return (
@@ -43,7 +43,7 @@ export function ContactSection() {
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} className="text-center space-y-4">
           <div className={`inline-block text-sm font-semibold tracking-widest uppercase px-4 py-1 rounded-full border ${
-            isDark ? "border-green-500/40 text-green-400 bg-green-500/10" : "border-blue-500/40 text-blue-600 bg-blue-500/10"
+            isDark ? "border-pink-500/40 text-pink-400 bg-pink-500/10" : "border-violet-500/40 text-violet-600 bg-violet-500/10"
           }`}>
             Contact
           </div>
@@ -69,17 +69,17 @@ export function ContactSection() {
                 whileHover={{ x: 6 }}
                 className={`flex items-center gap-4 p-4 rounded-xl border transition-all group ${
                   isDark
-                    ? "border-white/10 hover:border-green-500/40 hover:bg-green-500/5"
-                    : "border-gray-200 hover:border-blue-500/30 hover:bg-blue-500/5"
+                    ? "border-white/10 hover:border-pink-500/40 hover:bg-pink-500/5"
+                    : "border-gray-200 hover:border-violet-500/30 hover:bg-violet-500/5"
                 }`}>
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                  isDark ? "bg-green-500/20 text-green-400" : "bg-blue-500/10 text-blue-600"
+                  isDark ? "bg-pink-500/20 text-pink-400" : "bg-violet-500/10 text-violet-600"
                 }`}>
                   <Icon size={18} />
                 </div>
                 <div>
                   <p className={`text-xs font-medium uppercase tracking-wider ${isDark ? "text-white/40" : "text-gray-400"}`}>{label}</p>
-                  <p className={`text-sm font-medium ${isDark ? "text-white/80 group-hover:text-green-400" : "text-gray-700 group-hover:text-blue-600"} transition-colors`}>
+                  <p className={`text-sm font-medium ${isDark ? "text-white/80 group-hover:text-pink-400" : "text-gray-700 group-hover:text-violet-600"} transition-colors`}>
                     {value}
                   </p>
                 </div>
@@ -93,11 +93,13 @@ export function ContactSection() {
                 <motion.div key="success"
                   initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
                   className={`h-full flex flex-col items-center justify-center gap-6 p-10 rounded-2xl border text-center ${
-                    isDark ? "bg-green-500/10 border-green-500/40" : "bg-blue-50 border-blue-200"
+                    isDark
+                      ? "bg-gradient-to-br from-pink-500/10 to-violet-500/10 border-pink-500/40"
+                      : "bg-gradient-to-br from-pink-50 to-violet-50 border-violet-200"
                   }`}>
                   <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}
                     transition={{ type: "spring", damping: 10 }}
-                    className={isDark ? "text-green-400" : "text-blue-600"}>
+                    className={isDark ? "text-pink-400" : "text-violet-600"}>
                     <CheckCircle size={64} />
                   </motion.div>
                   <div>
@@ -106,7 +108,7 @@ export function ContactSection() {
                   </div>
                   <button onClick={() => { setSubmitted(false); setForm({ name: "", email: "", message: "" }); }}
                     className={`px-6 py-2 rounded-xl text-sm font-medium border transition-all ${
-                      isDark ? "border-green-500/40 text-green-400 hover:bg-green-500/10" : "border-blue-500/40 text-blue-600 hover:bg-blue-500/10"
+                      isDark ? "border-pink-500/40 text-pink-400 hover:bg-pink-500/10" : "border-violet-500/40 text-violet-600 hover:bg-violet-500/10"
                     }`}>
                     Send Another
                   </button>
@@ -139,10 +141,10 @@ export function ContactSection() {
                   </div>
                   <motion.button type="submit" disabled={loading}
                     whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                    className={`w-full py-3 px-6 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all disabled:opacity-70 ${
+                    className={`w-full py-3 px-6 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all disabled:opacity-70 text-white bg-gradient-to-r from-pink-500 to-violet-600 ${
                       isDark
-                        ? "bg-green-500 text-black hover:bg-green-400 shadow-[0_0_20px_rgba(0,230,100,0.35)] hover:shadow-[0_0_30px_rgba(0,230,100,0.55)]"
-                        : "bg-blue-600 text-white hover:bg-blue-500 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]"
+                        ? "shadow-[0_0_24px_rgba(236,72,153,0.4)] hover:shadow-[0_0_36px_rgba(236,72,153,0.6)]"
+                        : "shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_30px_rgba(139,92,246,0.5)]"
                     }`}>
                     {loading ? (
                       <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }}

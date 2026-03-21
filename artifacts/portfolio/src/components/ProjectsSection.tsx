@@ -28,7 +28,7 @@ export function ProjectsSection() {
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} className="text-center space-y-4">
           <div className={`inline-block text-sm font-semibold tracking-widest uppercase px-4 py-1 rounded-full border ${
-            isDark ? "border-green-500/40 text-green-400 bg-green-500/10" : "border-blue-500/40 text-blue-600 bg-blue-500/10"
+            isDark ? "border-pink-500/40 text-pink-400 bg-pink-500/10" : "border-violet-500/40 text-violet-600 bg-violet-500/10"
           }`}>
             Portfolio
           </div>
@@ -38,7 +38,6 @@ export function ProjectsSection() {
           </p>
         </motion.div>
 
-        {/* Featured Bento Grid (first 2) */}
         <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -47,7 +46,6 @@ export function ProjectsSection() {
           ))}
         </motion.div>
 
-        {/* Slider */}
         <div className="relative">
           <h3 className={`text-2xl font-semibold mb-6 ${isDark ? "text-white/80" : "text-gray-800"}`}>More Projects</h3>
           <div ref={sliderRef} className="keen-slider">
@@ -61,16 +59,16 @@ export function ProjectsSection() {
             <button onClick={() => instanceRef.current?.prev()}
               className={`p-2 rounded-xl border transition-all ${
                 isDark
-                  ? "border-white/10 text-white/60 hover:border-green-500/40 hover:text-green-400 hover:bg-green-500/10"
-                  : "border-gray-200 text-gray-500 hover:border-blue-500/40 hover:text-blue-600 hover:bg-blue-500/10"
+                  ? "border-white/10 text-white/60 hover:border-pink-500/40 hover:text-pink-400 hover:bg-pink-500/10"
+                  : "border-gray-200 text-gray-500 hover:border-violet-500/40 hover:text-violet-600 hover:bg-violet-500/10"
               }`}>
               <ChevronLeft size={18} />
             </button>
             <button onClick={() => instanceRef.current?.next()}
               className={`p-2 rounded-xl border transition-all ${
                 isDark
-                  ? "border-white/10 text-white/60 hover:border-green-500/40 hover:text-green-400 hover:bg-green-500/10"
-                  : "border-gray-200 text-gray-500 hover:border-blue-500/40 hover:text-blue-600 hover:bg-blue-500/10"
+                  ? "border-white/10 text-white/60 hover:border-pink-500/40 hover:text-pink-400 hover:bg-pink-500/10"
+                  : "border-gray-200 text-gray-500 hover:border-violet-500/40 hover:text-violet-600 hover:bg-violet-500/10"
               }`}>
               <ChevronRight size={18} />
             </button>
@@ -79,7 +77,7 @@ export function ProjectsSection() {
                 <button key={i} onClick={() => instanceRef.current?.moveToIdx(i)}
                   className={`h-1.5 rounded-full transition-all ${
                     currentSlide === i
-                      ? isDark ? "bg-green-400 w-6" : "bg-blue-600 w-6"
+                      ? isDark ? "bg-pink-400 w-6" : "bg-violet-600 w-6"
                       : isDark ? "bg-white/20 w-2" : "bg-gray-300 w-2"
                   }`} />
               ))}
@@ -98,8 +96,8 @@ function ProjectCard({ project, isDark, large = false }: {
     <motion.div whileHover={{ y: -8, scale: 1.01 }} transition={{ duration: 0.3 }}
       className={`group relative rounded-2xl border overflow-hidden transition-all duration-300 ${
         isDark
-          ? "bg-white/5 border-white/10 hover:border-green-500/40 hover:shadow-[0_0_40px_rgba(0,230,100,0.1)]"
-          : "bg-white border-gray-200 hover:border-blue-500/30 hover:shadow-[0_12px_40px_rgba(37,99,235,0.1)]"
+          ? "bg-white/5 border-white/10 hover:border-pink-500/40 hover:shadow-[0_0_40px_rgba(236,72,153,0.1)]"
+          : "bg-white border-gray-200 hover:border-violet-500/30 hover:shadow-[0_12px_40px_rgba(139,92,246,0.1)]"
       }`}>
       <div className={`relative ${large ? "h-52" : "h-40"} bg-gradient-to-br ${project.imageColor} flex items-center justify-center overflow-hidden`}>
         <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.05)_10px,rgba(255,255,255,0.05)_20px)]" />
@@ -121,7 +119,7 @@ function ProjectCard({ project, isDark, large = false }: {
           {project.githubUrl && (
             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
               className={`inline-flex items-center gap-1.5 text-xs font-medium transition-colors ${
-                isDark ? "text-white/50 hover:text-green-400" : "text-gray-500 hover:text-blue-600"
+                isDark ? "text-white/50 hover:text-pink-400" : "text-gray-500 hover:text-violet-600"
               }`}>
               <Github size={14} /> GitHub
             </a>
@@ -129,7 +127,7 @@ function ProjectCard({ project, isDark, large = false }: {
           {project.liveUrl && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
               className={`inline-flex items-center gap-1.5 text-xs font-medium transition-colors ${
-                isDark ? "text-white/50 hover:text-green-400" : "text-gray-500 hover:text-blue-600"
+                isDark ? "text-white/50 hover:text-pink-400" : "text-gray-500 hover:text-violet-600"
               }`}>
               <ExternalLink size={14} /> Live Demo
             </a>

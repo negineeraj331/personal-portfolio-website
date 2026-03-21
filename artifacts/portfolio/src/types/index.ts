@@ -24,6 +24,9 @@ export interface Certificate {
   title: string;
   issuer: string;
   date: string;
+  pdfPath: string;
+  gradient: string;
+  badgeColor: string;
 }
 
 export interface Skill {

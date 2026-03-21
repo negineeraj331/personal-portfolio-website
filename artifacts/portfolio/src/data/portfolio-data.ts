@@ -13,22 +13,10 @@ export const personalInfo = {
 };
 
 export const skills: Skill[] = [
-  {
-    category: "Languages",
-    items: ["C++", "JavaScript (ES6+)", "Python"],
-  },
-  {
-    category: "Frameworks",
-    items: ["React", "Node.js", "Express.js", "Tailwind CSS", "Bootstrap"],
-  },
-  {
-    category: "Tools & Platforms",
-    items: ["MySQL", "MongoDB", "Vercel", "Git/GitHub", "VS Code", "Postman", "Figma", "REST APIs", "HTML", "CSS"],
-  },
-  {
-    category: "Soft Skills",
-    items: ["Problem-Solving", "Team Player", "Adaptability", "Critical Thinking", "Time Management"],
-  },
+  { category: "Languages", items: ["C++", "JavaScript (ES6+)", "Python"] },
+  { category: "Frameworks", items: ["React", "Node.js", "Express.js", "Tailwind CSS", "Bootstrap"] },
+  { category: "Tools & Platforms", items: ["MySQL", "MongoDB", "Vercel", "Git/GitHub", "VS Code", "Postman", "Figma", "REST APIs", "HTML", "CSS"] },
+  { category: "Soft Skills", items: ["Problem-Solving", "Team Player", "Adaptability", "Critical Thinking", "Time Management"] },
 ];
 
 export const projects: Project[] = [
@@ -38,7 +26,7 @@ export const projects: Project[] = [
     description: "An Airport Route Planner that finds optimal connections between source and destination airports using Graph Data Structures and Dijkstra's Algorithm, with dynamic SVG visualization.",
     tags: ["JavaScript", "Graph DS", "Dijkstra", "SVG", "HTML", "CSS", "Vercel"],
     githubUrl: "https://github.com/negineeraj331",
-    imageColor: "from-cyan-500 to-blue-600",
+    imageColor: "from-pink-500 to-violet-600",
     featured: true,
     size: "large",
   },
@@ -48,7 +36,7 @@ export const projects: Project[] = [
     description: "A responsive Flask web application combining AI with real-time food data. Features an interactive AI Chef chatbot, recipe generation from ingredients, and smart shopping list generation.",
     tags: ["Python", "Flask", "OpenRouter API", "Spoonacular API", "JavaScript", "HTML5", "CSS3"],
     githubUrl: "https://github.com/negineeraj331",
-    imageColor: "from-green-500 to-emerald-600",
+    imageColor: "from-violet-500 to-fuchsia-600",
     featured: true,
     size: "medium",
   },
@@ -58,7 +46,7 @@ export const projects: Project[] = [
     description: "Solved 350+ competitive-level coding problems across LeetCode and multiple platforms, focusing on edge-case handling, algorithmic optimization, Stack, Queues, Hash Maps, BFS/DFS algorithms.",
     tags: ["C++", "DSA", "LeetCode", "Algorithms", "Data Structures"],
     githubUrl: "https://github.com/negineeraj331",
-    imageColor: "from-violet-500 to-purple-600",
+    imageColor: "from-fuchsia-500 to-pink-600",
     featured: false,
     size: "medium",
   },
@@ -67,7 +55,7 @@ export const projects: Project[] = [
     title: "AI-Powered Adaptive Exosuits",
     description: "Filed a patent for 'AI-Powered Adaptive Exosuits for Deep-Sea Exploration, Tourism, and Marine Research' — showcasing advanced innovation and technical problem-solving in deep-tech domains.",
     tags: ["AI", "Innovation", "Patent", "Deep Tech"],
-    imageColor: "from-orange-500 to-red-600",
+    imageColor: "from-pink-600 to-rose-600",
     featured: false,
     size: "small",
   },
@@ -76,7 +64,7 @@ export const projects: Project[] = [
     title: "Generative AI Projects",
     description: "Explored and built projects using Generative AI techniques, prompt engineering, and LLM integrations. Certified by Oracle (OCI) and Infosys Springboard.",
     tags: ["Generative AI", "LLM", "Prompt Engineering", "Oracle", "Python"],
-    imageColor: "from-pink-500 to-rose-600",
+    imageColor: "from-violet-600 to-purple-600",
     featured: false,
     size: "small",
   },
@@ -123,10 +111,58 @@ export const experiences: Experience[] = [
 ];
 
 export const certificates: Certificate[] = [
-  { id: "c1", title: "Generative AI Oracle Cloud Infrastructure", issuer: "Oracle", date: "Sep 2025" },
-  { id: "c2", title: "Prompt Engineering", issuer: "Infosys Springboard", date: "Aug 2025" },
-  { id: "c3", title: "Generative AI", issuer: "Infosys Springboard", date: "Aug 2025" },
-  { id: "c4", title: "CRUD Operations", issuer: "MongoDB", date: "Jul 2025" },
-  { id: "c5", title: "Cloud Computing", issuer: "NPTEL", date: "Jun 2025" },
-  { id: "c6", title: "The Bits and Bytes of Computer Networking", issuer: "Google (Coursera)", date: "Oct 2024" },
+  {
+    id: "c1",
+    title: "Generative AI Oracle Cloud Infrastructure",
+    issuer: "Oracle",
+    date: "Oct 2025",
+    pdfPath: "/certificates/oracle-genai.pdf",
+    gradient: "from-red-500 to-orange-500",
+    badgeColor: "bg-red-500/20 text-red-400",
+  },
+  {
+    id: "c2",
+    title: "Prompt Engineering – ChatGPT & LLM",
+    issuer: "Infosys Springboard",
+    date: "Aug 2025",
+    pdfPath: "/certificates/infosys-prompt.pdf",
+    gradient: "from-pink-500 to-fuchsia-500",
+    badgeColor: "bg-pink-500/20 text-pink-400",
+  },
+  {
+    id: "c3",
+    title: "Generative AI & Generative AI Tools",
+    issuer: "Infosys Springboard",
+    date: "Aug 2025",
+    pdfPath: "/certificates/infosys-genai.pdf",
+    gradient: "from-fuchsia-500 to-violet-500",
+    badgeColor: "bg-fuchsia-500/20 text-fuchsia-400",
+  },
+  {
+    id: "c4",
+    title: "CRUD Operations",
+    issuer: "MongoDB",
+    date: "Jun 2025",
+    pdfPath: "/certificates/mongodb-crud.pdf",
+    gradient: "from-emerald-500 to-teal-500",
+    badgeColor: "bg-emerald-500/20 text-emerald-400",
+  },
+  {
+    id: "c5",
+    title: "Cloud Computing",
+    issuer: "NPTEL",
+    date: "Jan – Apr 2025",
+    pdfPath: "/certificates/nptel-cloud.pdf",
+    gradient: "from-violet-500 to-blue-500",
+    badgeColor: "bg-violet-500/20 text-violet-400",
+  },
+  {
+    id: "c6",
+    title: "The Bits and Bytes of Computer Networking",
+    issuer: "Google (Coursera)",
+    date: "Sep 2024",
+    pdfPath: "/certificates/google-networking.pdf",
+    gradient: "from-blue-500 to-cyan-500",
+    badgeColor: "bg-blue-500/20 text-blue-400",
+  },
 ];
