@@ -25,214 +25,130 @@ export function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errs = validate();
-    if (Object.keys(errs).length > 0) {
-      setErrors(errs);
-      return;
-    }
+    if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setErrors({});
     setLoading(true);
-    // Simulate sending
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 1500);
+    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1500);
   };
 
   const inputClass = `w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all ${
     isDark
-      ? "bg-white/5 border-white/10 text-white placeholder-white/30 focus:border-cyan-500/60 focus:shadow-[0_0_0_3px_rgba(0,255,255,0.1)]"
+      ? "bg-white/5 border-white/10 text-white placeholder-white/30 focus:border-green-500/60 focus:shadow-[0_0_0_3px_rgba(0,230,100,0.1)]"
       : "bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-blue-500/60 focus:shadow-[0_0_0_3px_rgba(37,99,235,0.1)]"
   }`;
 
   return (
     <section id="contact" className="relative py-24 px-4">
       <div className="max-w-6xl mx-auto space-y-14">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center space-y-4"
-        >
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} className="text-center space-y-4">
           <div className={`inline-block text-sm font-semibold tracking-widest uppercase px-4 py-1 rounded-full border ${
-            isDark ? "border-cyan-500/40 text-cyan-400 bg-cyan-500/10" : "border-blue-500/40 text-blue-600 bg-blue-500/10"
+            isDark ? "border-green-500/40 text-green-400 bg-green-500/10" : "border-blue-500/40 text-blue-600 bg-blue-500/10"
           }`}>
             Contact
           </div>
-          <h2 className={`text-4xl md:text-5xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>
-            Let's Work Together
-          </h2>
+          <h2 className={`text-4xl md:text-5xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>Let's Work Together</h2>
           <p className={`max-w-xl mx-auto text-lg ${isDark ? "text-white/60" : "text-gray-600"}`}>
             I'm currently open to new opportunities. Whether you have a question or just want to say hi, my inbox is always open!
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div className="space-y-4">
-              {[
-                { icon: Mail, label: "Email", value: personalInfo.email, href: `mailto:${personalInfo.email}` },
-                { icon: Phone, label: "Phone", value: personalInfo.mobile, href: `tel:${personalInfo.mobile}` },
-                { icon: MapPin, label: "Location", value: personalInfo.location, href: "#" },
-                { icon: Github, label: "GitHub", value: "negineeraj331", href: personalInfo.github },
-                { icon: Linkedin, label: "LinkedIn", value: "neeraj-negi07", href: personalInfo.linkedin },
-              ].map(({ icon: Icon, label, value, href }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 6 }}
-                  className={`flex items-center gap-4 p-4 rounded-xl border transition-all group ${
-                    isDark
-                      ? "border-white/10 hover:border-cyan-500/40 hover:bg-cyan-500/5"
-                      : "border-gray-200 hover:border-blue-500/30 hover:bg-blue-500/5"
-                  }`}
-                >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    isDark ? "bg-cyan-500/20 text-cyan-400" : "bg-blue-500/10 text-blue-600"
-                  }`}>
-                    <Icon size={18} />
-                  </div>
-                  <div>
-                    <p className={`text-xs font-medium uppercase tracking-wider ${isDark ? "text-white/40" : "text-gray-400"}`}>
-                      {label}
-                    </p>
-                    <p className={`text-sm font-medium ${isDark ? "text-white/80 group-hover:text-cyan-400" : "text-gray-700 group-hover:text-blue-600"} transition-colors`}>
-                      {value}
-                    </p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
+          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }} className="space-y-4">
+            {[
+              { icon: Mail, label: "Email", value: personalInfo.email, href: `mailto:${personalInfo.email}` },
+              { icon: Phone, label: "Phone", value: personalInfo.mobile, href: `tel:${personalInfo.mobile}` },
+              { icon: MapPin, label: "Location", value: personalInfo.location, href: "#" },
+              { icon: Github, label: "GitHub", value: "negineeraj331", href: "https://github.com/negineeraj331" },
+              { icon: Linkedin, label: "LinkedIn", value: "neeraj-negi07", href: "https://www.linkedin.com/in/neeraj-negi07" },
+            ].map(({ icon: Icon, label, value, href }) => (
+              <motion.a key={label} href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                whileHover={{ x: 6 }}
+                className={`flex items-center gap-4 p-4 rounded-xl border transition-all group ${
+                  isDark
+                    ? "border-white/10 hover:border-green-500/40 hover:bg-green-500/5"
+                    : "border-gray-200 hover:border-blue-500/30 hover:bg-blue-500/5"
+                }`}>
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                  isDark ? "bg-green-500/20 text-green-400" : "bg-blue-500/10 text-blue-600"
+                }`}>
+                  <Icon size={18} />
+                </div>
+                <div>
+                  <p className={`text-xs font-medium uppercase tracking-wider ${isDark ? "text-white/40" : "text-gray-400"}`}>{label}</p>
+                  <p className={`text-sm font-medium ${isDark ? "text-white/80 group-hover:text-green-400" : "text-gray-700 group-hover:text-blue-600"} transition-colors`}>
+                    {value}
+                  </p>
+                </div>
+              </motion.a>
+            ))}
           </motion.div>
 
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
+          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <AnimatePresence mode="wait">
               {submitted ? (
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
+                <motion.div key="success"
+                  initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
                   className={`h-full flex flex-col items-center justify-center gap-6 p-10 rounded-2xl border text-center ${
-                    isDark
-                      ? "bg-cyan-500/10 border-cyan-500/40"
-                      : "bg-blue-50 border-blue-200"
-                  }`}
-                >
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
+                    isDark ? "bg-green-500/10 border-green-500/40" : "bg-blue-50 border-blue-200"
+                  }`}>
+                  <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}
                     transition={{ type: "spring", damping: 10 }}
-                    className={isDark ? "text-cyan-400" : "text-blue-600"}
-                  >
+                    className={isDark ? "text-green-400" : "text-blue-600"}>
                     <CheckCircle size={64} />
                   </motion.div>
                   <div>
-                    <h3 className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>
-                      Message Sent!
-                    </h3>
-                    <p className={`mt-2 ${isDark ? "text-white/60" : "text-gray-600"}`}>
-                      Thanks for reaching out. I'll get back to you soon!
-                    </p>
+                    <h3 className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>Message Sent!</h3>
+                    <p className={`mt-2 ${isDark ? "text-white/60" : "text-gray-600"}`}>Thanks for reaching out. I'll get back to you soon!</p>
                   </div>
-                  <button
-                    onClick={() => { setSubmitted(false); setForm({ name: "", email: "", message: "" }); }}
+                  <button onClick={() => { setSubmitted(false); setForm({ name: "", email: "", message: "" }); }}
                     className={`px-6 py-2 rounded-xl text-sm font-medium border transition-all ${
-                      isDark
-                        ? "border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/10"
-                        : "border-blue-500/40 text-blue-600 hover:bg-blue-500/10"
-                    }`}
-                  >
+                      isDark ? "border-green-500/40 text-green-400 hover:bg-green-500/10" : "border-blue-500/40 text-blue-600 hover:bg-blue-500/10"
+                    }`}>
                     Send Another
                   </button>
                 </motion.div>
               ) : (
-                <motion.form
-                  key="form"
-                  onSubmit={handleSubmit}
+                <motion.form key="form" onSubmit={handleSubmit}
                   className={`p-8 rounded-2xl border space-y-5 ${
                     isDark ? "bg-white/5 border-white/10" : "bg-white border-gray-200 shadow-sm"
                   }`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                >
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  {["name", "email"].map((field) => (
+                    <div key={field} className="space-y-1">
+                      <label className={`text-sm font-medium ${isDark ? "text-white/70" : "text-gray-700"}`}>
+                        {field.charAt(0).toUpperCase() + field.slice(1)}
+                      </label>
+                      <input type={field === "email" ? "email" : "text"}
+                        placeholder={field === "email" ? "your@email.com" : "Your full name"}
+                        value={form[field as "name" | "email"]}
+                        onChange={(e) => setForm({ ...form, [field]: e.target.value })}
+                        className={inputClass} />
+                      {errors[field] && <p className="text-red-400 text-xs mt-1">{errors[field]}</p>}
+                    </div>
+                  ))}
                   <div className="space-y-1">
-                    <label className={`text-sm font-medium ${isDark ? "text-white/70" : "text-gray-700"}`}>
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Your full name"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className={inputClass}
-                    />
-                    {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className={`text-sm font-medium ${isDark ? "text-white/70" : "text-gray-700"}`}>
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className={inputClass}
-                    />
-                    {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className={`text-sm font-medium ${isDark ? "text-white/70" : "text-gray-700"}`}>
-                      Message
-                    </label>
-                    <textarea
-                      placeholder="Tell me about your project or opportunity..."
-                      rows={5}
-                      value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      className={`${inputClass} resize-none`}
-                    />
+                    <label className={`text-sm font-medium ${isDark ? "text-white/70" : "text-gray-700"}`}>Message</label>
+                    <textarea placeholder="Tell me about your project or opportunity..." rows={5}
+                      value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      className={`${inputClass} resize-none`} />
                     {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
                   </div>
-
-                  <motion.button
-                    type="submit"
-                    disabled={loading}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                  <motion.button type="submit" disabled={loading}
+                    whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                     className={`w-full py-3 px-6 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all disabled:opacity-70 ${
                       isDark
-                        ? "bg-cyan-500 text-black hover:bg-cyan-400 shadow-[0_0_20px_rgba(0,255,255,0.3)] hover:shadow-[0_0_30px_rgba(0,255,255,0.5)]"
+                        ? "bg-green-500 text-black hover:bg-green-400 shadow-[0_0_20px_rgba(0,230,100,0.35)] hover:shadow-[0_0_30px_rgba(0,230,100,0.55)]"
                         : "bg-blue-600 text-white hover:bg-blue-500 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]"
-                    }`}
-                  >
+                    }`}>
                     {loading ? (
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                        className="w-4 h-4 border-2 border-current border-t-transparent rounded-full"
-                      />
+                      <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        className="w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
                     ) : (
-                      <>
-                        <Send size={16} />
-                        Send Message
-                      </>
+                      <><Send size={16} /> Send Message</>
                     )}
                   </motion.button>
                 </motion.form>

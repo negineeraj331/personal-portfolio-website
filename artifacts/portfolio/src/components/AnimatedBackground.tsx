@@ -2,12 +2,12 @@ import { useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 
 const DARK_COLORS = [
-  "0, 255, 255",   // cyan
-  "120, 80, 255",  // violet
-  "0, 200, 120",   // green
-  "255, 100, 200", // pink
-  "255, 200, 0",   // gold
-  "80, 180, 255",  // sky blue
+  "0, 230, 100",   // neon green (primary)
+  "0, 255, 140",   // bright green
+  "120, 255, 80",  // lime green
+  "80, 200, 120",  // soft green
+  "0, 200, 255",   // teal accent
+  "160, 80, 255",  // violet accent
 ];
 
 const LIGHT_COLORS = [
@@ -36,13 +36,8 @@ export function ParticleBackground() {
     canvas.height = window.innerHeight;
 
     const particles: {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number;
-      opacity: number;
-      colorIdx: number;
+      x: number; y: number; vx: number; vy: number;
+      radius: number; opacity: number; colorIdx: number;
     }[] = [];
 
     const count = 90;
@@ -66,33 +61,28 @@ export function ParticleBackground() {
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
-
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
         const col = COLORS[p.colorIdx];
-
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${col}, ${p.opacity})`;
-
-        // Strong glow
-        ctx.shadowBlur = isDark ? 14 : 8;
+        ctx.shadowBlur = isDark ? 16 : 8;
         ctx.shadowColor = `rgba(${col}, ${isDark ? 0.9 : 0.6})`;
         ctx.fill();
         ctx.shadowBlur = 0;
       });
 
-      // Draw connecting lines with matching colors
       particles.forEach((p1, i) => {
         particles.slice(i + 1).forEach((p2) => {
           const dx = p1.x - p2.x;
           const dy = p1.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 130) {
-            const alpha = (1 - dist / 130) * (isDark ? 0.25 : 0.18);
+            const alpha = (1 - dist / 130) * (isDark ? 0.28 : 0.18);
             const col = COLORS[p1.colorIdx];
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
@@ -114,17 +104,8 @@ export function ParticleBackground() {
       canvas.height = window.innerHeight;
     };
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => { cancelAnimationFrame(animId); window.removeEventListener("resize", handleResize); };
   }, [resolvedTheme]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-    />
-  );
+  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" />;
 }
