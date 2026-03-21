@@ -11,6 +11,48 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
+function NNLogo({ isDark }: { isDark: boolean }) {
+  return (
+    <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGrad" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor={isDark ? "#00ffff" : "#2563eb"} />
+          <stop offset="100%" stopColor={isDark ? "#7c3aed" : "#7c3aed"} />
+        </linearGradient>
+        <filter id="logoGlow">
+          <feGaussianBlur stdDeviation="1.5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      {/* Hexagon background */}
+      <path
+        d="M21 2L37.5 11.5V30.5L21 40L4.5 30.5V11.5L21 2Z"
+        fill={isDark ? "rgba(0,255,255,0.08)" : "rgba(37,99,235,0.08)"}
+        stroke="url(#logoGrad)"
+        strokeWidth="1.5"
+        filter="url(#logoGlow)"
+      />
+      {/* N N letters */}
+      <text
+        x="21"
+        y="26"
+        textAnchor="middle"
+        fontSize="13"
+        fontWeight="800"
+        fontFamily="'Inter', system-ui, sans-serif"
+        fill="url(#logoGrad)"
+        letterSpacing="-1"
+        filter="url(#logoGlow)"
+      >
+        NN
+      </text>
+    </svg>
+  );
+}
+
 export function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
@@ -53,14 +95,19 @@ export function Navbar() {
           <motion.a
             href="#hero"
             onClick={(e) => { e.preventDefault(); scrollTo("#hero"); }}
-            className={`text-xl font-bold tracking-tight ${
-              isDark
-                ? "text-cyan-400 drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]"
-                : "text-blue-600 drop-shadow-[0_0_8px_rgba(37,99,235,0.3)]"
-            }`}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.08 }}
+            className="flex items-center gap-2.5 group"
           >
-            NN
+            <NNLogo isDark={isDark} />
+            <span
+              className={`text-sm font-bold tracking-wide hidden sm:block ${
+                isDark
+                  ? "text-cyan-400 drop-shadow-[0_0_8px_rgba(0,255,255,0.4)]"
+                  : "text-blue-600"
+              }`}
+            >
+              Neeraj Negi
+            </span>
           </motion.a>
 
           {/* Desktop Nav */}
@@ -83,7 +130,6 @@ export function Navbar() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
-            {/* Theme toggle */}
             {mounted && (
               <motion.button
                 onClick={toggleTheme}

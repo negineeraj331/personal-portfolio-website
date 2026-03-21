@@ -1,8 +1,9 @@
 import { useTheme } from "next-themes";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { personalInfo } from "../data/portfolio-data";
+import neerajPhoto from "@assets/neeraj_1774112057788.jpg";
 
 function scrollTo(href: string) {
   const el = document.querySelector(href);
@@ -134,31 +135,52 @@ export function HeroSection() {
             transition={{ delay: 0.9 }}
             className="flex items-center gap-4"
           >
-            {[
-              { icon: Github, href: personalInfo.github, label: "GitHub" },
-              { icon: Linkedin, href: personalInfo.linkedin, label: "LinkedIn" },
-              { icon: Mail, href: `mailto:${personalInfo.email}`, label: "Email" },
-            ].map(({ icon: Icon, href, label }) => (
-              <motion.a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, y: -2 }}
-                className={`p-2.5 rounded-xl border transition-all duration-200 ${
-                  isDark
-                    ? "border-white/10 text-white/50 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 hover:shadow-[0_0_12px_rgba(0,255,255,0.2)]"
-                    : "border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-500/40 hover:bg-blue-500/10 hover:shadow-[0_0_12px_rgba(37,99,235,0.2)]"
-                }`}
-                aria-label={label}
-              >
-                <Icon size={18} />
-              </motion.a>
-            ))}
+            <motion.a
+              href="https://github.com/negineeraj331"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, y: -2 }}
+              className={`p-2.5 rounded-xl border transition-all duration-200 ${
+                isDark
+                  ? "border-white/10 text-white/50 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 hover:shadow-[0_0_12px_rgba(0,255,255,0.2)]"
+                  : "border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-500/40 hover:bg-blue-500/10 hover:shadow-[0_0_12px_rgba(37,99,235,0.2)]"
+              }`}
+              aria-label="GitHub"
+            >
+              <Github size={18} />
+            </motion.a>
+
+            <motion.a
+              href="https://www.linkedin.com/in/neeraj-negi07"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, y: -2 }}
+              className={`p-2.5 rounded-xl border transition-all duration-200 ${
+                isDark
+                  ? "border-white/10 text-white/50 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 hover:shadow-[0_0_12px_rgba(0,255,255,0.2)]"
+                  : "border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-500/40 hover:bg-blue-500/10 hover:shadow-[0_0_12px_rgba(37,99,235,0.2)]"
+              }`}
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={18} />
+            </motion.a>
+
+            <motion.a
+              href={`mailto:${personalInfo.email}`}
+              whileHover={{ scale: 1.2, y: -2 }}
+              className={`p-2.5 rounded-xl border transition-all duration-200 ${
+                isDark
+                  ? "border-white/10 text-white/50 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 hover:shadow-[0_0_12px_rgba(0,255,255,0.2)]"
+                  : "border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-500/40 hover:bg-blue-500/10 hover:shadow-[0_0_12px_rgba(37,99,235,0.2)]"
+              }`}
+              aria-label="Email"
+            >
+              <Mail size={18} />
+            </motion.a>
           </motion.div>
         </motion.div>
 
-        {/* Avatar / Visual Side */}
+        {/* Avatar / Photo Side */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -166,74 +188,54 @@ export function HeroSection() {
           className="flex justify-center"
         >
           <div className="relative">
-            {/* Outer glow ring */}
+            {/* Outer glow */}
             <div
-              className={`absolute inset-0 rounded-full blur-2xl opacity-30 ${
+              className={`absolute inset-0 rounded-full blur-2xl opacity-40 ${
                 isDark ? "bg-cyan-500" : "bg-blue-500"
-              }`}
-              style={{ transform: "scale(1.2)" }}
-            />
-            {/* Rotating ring */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className={`absolute inset-0 rounded-full border-2 border-dashed ${
-                isDark ? "border-cyan-500/40" : "border-blue-500/30"
               }`}
               style={{ transform: "scale(1.15)" }}
             />
-            {/* Avatar container */}
+            {/* Rotating dashed ring */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className={`absolute rounded-full border-2 border-dashed ${
+                isDark ? "border-cyan-500/50" : "border-blue-500/40"
+              }`}
+              style={{
+                inset: "-16px",
+              }}
+            />
+            {/* Second counter-rotating ring */}
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className={`absolute rounded-full border border-dotted ${
+                isDark ? "border-violet-400/40" : "border-blue-300/50"
+              }`}
+              style={{ inset: "-28px" }}
+            />
+
+            {/* Photo container */}
             <div
               className={`relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 ${
                 isDark
-                  ? "border-cyan-500/60 shadow-[0_0_50px_rgba(0,255,255,0.3)]"
-                  : "border-blue-500/60 shadow-[0_0_50px_rgba(37,99,235,0.2)]"
+                  ? "border-cyan-500/70 shadow-[0_0_60px_rgba(0,255,255,0.35)]"
+                  : "border-blue-500/60 shadow-[0_0_60px_rgba(37,99,235,0.25)]"
               }`}
             >
-              {/* Placeholder headshot with gradient */}
-              <div
-                className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${
-                  isDark
-                    ? "from-gray-800 to-gray-900"
-                    : "from-gray-100 to-gray-200"
-                }`}
-              >
-                {/* Silhouette placeholder */}
-                <svg
-                  viewBox="0 0 200 200"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-full h-full"
-                >
-                  <defs>
-                    <linearGradient id="avatarGrad" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stopColor={isDark ? "#06b6d4" : "#2563eb"} stopOpacity="0.8" />
-                      <stop offset="100%" stopColor={isDark ? "#0891b2" : "#1d4ed8"} stopOpacity="0.4" />
-                    </linearGradient>
-                  </defs>
-                  <rect width="200" height="200" fill={isDark ? "#111827" : "#f3f4f6"} />
-                  <circle cx="100" cy="72" r="40" fill="url(#avatarGrad)" />
-                  <ellipse cx="100" cy="175" rx="65" ry="45" fill="url(#avatarGrad)" />
-                  <text
-                    x="100"
-                    y="78"
-                    textAnchor="middle"
-                    fontSize="36"
-                    fontWeight="bold"
-                    fill={isDark ? "#0a0a0a" : "#ffffff"}
-                    fontFamily="sans-serif"
-                  >
-                    NN
-                  </text>
-                </svg>
-              </div>
+              <img
+                src={neerajPhoto}
+                alt="Neeraj Negi"
+                className="w-full h-full object-cover object-top"
+              />
             </div>
 
             {/* Floating badges */}
             <motion.div
               animate={{ y: [-6, 6, -6] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className={`absolute -right-4 top-8 px-3 py-1.5 rounded-xl text-xs font-semibold border ${
+              className={`absolute -right-6 top-6 px-3 py-1.5 rounded-xl text-xs font-semibold border ${
                 isDark
                   ? "bg-[#0a0a0a] border-cyan-500/40 text-cyan-400 shadow-[0_0_12px_rgba(0,255,255,0.2)]"
                   : "bg-white border-blue-500/30 text-blue-600 shadow-lg"
@@ -244,7 +246,7 @@ export function HeroSection() {
             <motion.div
               animate={{ y: [6, -6, 6] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-              className={`absolute -left-4 bottom-16 px-3 py-1.5 rounded-xl text-xs font-semibold border ${
+              className={`absolute -left-6 bottom-14 px-3 py-1.5 rounded-xl text-xs font-semibold border ${
                 isDark
                   ? "bg-[#0a0a0a] border-cyan-500/40 text-cyan-400 shadow-[0_0_12px_rgba(0,255,255,0.2)]"
                   : "bg-white border-blue-500/30 text-blue-600 shadow-lg"

@@ -22,25 +22,40 @@ export function Footer() {
         </div>
 
         <div className="flex items-center gap-4">
-          {[
-            { icon: Github, href: personalInfo.github, label: "GitHub" },
-            { icon: Linkedin, href: personalInfo.linkedin, label: "LinkedIn" },
-            { icon: Mail, href: `mailto:${personalInfo.email}`, label: "Email" },
-          ].map(({ icon: Icon, href, label }) => (
-            <motion.a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, y: -2 }}
-              className={`transition-colors ${
-                isDark ? "text-white/30 hover:text-cyan-400" : "text-gray-400 hover:text-blue-600"
-              }`}
-              aria-label={label}
-            >
-              <Icon size={18} />
-            </motion.a>
-          ))}
+          <motion.a
+            href="https://github.com/negineeraj331"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2, y: -2 }}
+            className={`transition-colors ${
+              isDark ? "text-white/30 hover:text-cyan-400" : "text-gray-400 hover:text-blue-600"
+            }`}
+            aria-label="GitHub"
+          >
+            <Github size={18} />
+          </motion.a>
+          <motion.a
+            href="https://www.linkedin.com/in/neeraj-negi07"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2, y: -2 }}
+            className={`transition-colors ${
+              isDark ? "text-white/30 hover:text-cyan-400" : "text-gray-400 hover:text-blue-600"
+            }`}
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={18} />
+          </motion.a>
+          <motion.a
+            href={`mailto:${personalInfo.email}`}
+            whileHover={{ scale: 1.2, y: -2 }}
+            className={`transition-colors ${
+              isDark ? "text-white/30 hover:text-cyan-400" : "text-gray-400 hover:text-blue-600"
+            }`}
+            aria-label="Email"
+          >
+            <Mail size={18} />
+          </motion.a>
         </div>
 
         <p className={`text-sm ${isDark ? "text-white/30" : "text-gray-400"}`}>
