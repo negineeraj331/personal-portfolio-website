@@ -198,7 +198,7 @@ export function HeroSection() {
 
             {/* Photo */}
             <div
-              className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4"
+              className="relative w-[340px] h-[340px] md:w-[440px] md:h-[440px] lg:w-[480px] lg:h-[480px] rounded-full overflow-hidden border-4"
               style={{
                 borderColor: isDark ? "rgba(236,72,153,0.7)" : "rgba(139,92,246,0.6)",
                 boxShadow: isDark
@@ -206,7 +206,7 @@ export function HeroSection() {
                   : "0 0 60px rgba(139,92,246,0.25)",
               }}
             >
-              <img src={neerajPhoto} alt="Neeraj Negi" className="w-full h-full object-cover object-top" />
+              <img src="/enhanced_profile.png" alt="Neeraj Negi" className="w-full h-full object-cover object-top" />
             </div>
 
             {/* Floating badges */}

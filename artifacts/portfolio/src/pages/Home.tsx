@@ -9,6 +9,8 @@ import { ExperienceSection } from "../components/ExperienceSection";
 import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
 
+import { AchievementsSection } from "../components/AchievementsSection";
+
 function PortfolioContent() {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
@@ -24,6 +26,7 @@ function PortfolioContent() {
         <main>
           <HeroSection />
           <AboutSection />
+          <AchievementsSection />
           <ProjectsSection />
           <CertificationsSection />
           <ExperienceSection />

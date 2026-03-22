@@ -75,6 +75,23 @@ export function ExperienceSection() {
                         </li>
                       ))}
                     </ul>
+                    {exp.certificateImage && (
+                      <div className="mt-5 pt-5 border-t border-white/5">
+                        <a 
+                          href={exp.certificatePath || exp.certificateImage} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shadow-sm border ${
+                            isDark
+                              ? "border-pink-500/30 text-pink-400 bg-pink-500/10 hover:bg-pink-500/20 hover:border-pink-400 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)]"
+                              : "border-violet-500/30 text-violet-600 bg-violet-50 hover:bg-violet-100 hover:border-violet-500"
+                          }`}
+                        >
+                          <BookOpen size={16} />
+                          View Full Certificate
+                        </a>
+                      </div>
+                    )}
                   </motion.div>
                 </motion.div>
               );

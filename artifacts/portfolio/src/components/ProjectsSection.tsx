@@ -41,49 +41,10 @@ export function ProjectsSection() {
         <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.slice(0, 2).map((project) => (
+          {projects.filter(p => p.featured).map((project) => (
             <ProjectCard key={project.id} project={project} isDark={isDark} large />
           ))}
         </motion.div>
-
-        <div className="relative">
-          <h3 className={`text-2xl font-semibold mb-6 ${isDark ? "text-white/80" : "text-gray-800"}`}>More Projects</h3>
-          <div ref={sliderRef} className="keen-slider">
-            {projects.slice(2).map((project) => (
-              <div key={project.id} className="keen-slider__slide">
-                <ProjectCard project={project} isDark={isDark} />
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center gap-4 mt-6">
-            <button onClick={() => instanceRef.current?.prev()}
-              className={`p-2 rounded-xl border transition-all ${
-                isDark
-                  ? "border-white/10 text-white/60 hover:border-pink-500/40 hover:text-pink-400 hover:bg-pink-500/10"
-                  : "border-gray-200 text-gray-500 hover:border-violet-500/40 hover:text-violet-600 hover:bg-violet-500/10"
-              }`}>
-              <ChevronLeft size={18} />
-            </button>
-            <button onClick={() => instanceRef.current?.next()}
-              className={`p-2 rounded-xl border transition-all ${
-                isDark
-                  ? "border-white/10 text-white/60 hover:border-pink-500/40 hover:text-pink-400 hover:bg-pink-500/10"
-                  : "border-gray-200 text-gray-500 hover:border-violet-500/40 hover:text-violet-600 hover:bg-violet-500/10"
-              }`}>
-              <ChevronRight size={18} />
-            </button>
-            <div className="flex gap-2">
-              {projects.slice(2).map((_, i) => (
-                <button key={i} onClick={() => instanceRef.current?.moveToIdx(i)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    currentSlide === i
-                      ? isDark ? "bg-pink-400 w-6" : "bg-violet-600 w-6"
-                      : isDark ? "bg-white/20 w-2" : "bg-gray-300 w-2"
-                  }`} />
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -99,11 +60,17 @@ function ProjectCard({ project, isDark, large = false }: {
           ? "bg-white/5 border-white/10 hover:border-pink-500/40 hover:shadow-[0_0_40px_rgba(236,72,153,0.1)]"
           : "bg-white border-gray-200 hover:border-violet-500/30 hover:shadow-[0_12px_40px_rgba(139,92,246,0.1)]"
       }`}>
-      <div className={`relative ${large ? "h-52" : "h-40"} bg-gradient-to-br ${project.imageColor} flex items-center justify-center overflow-hidden`}>
-        <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.05)_10px,rgba(255,255,255,0.05)_20px)]" />
-        <span className="text-white/90 font-bold text-xl tracking-tight z-10 px-4 text-center leading-tight">
-          {project.title}
-        </span>
+      <div className={`relative ${large ? "h-60" : "h-48"} bg-gradient-to-br ${project.imageColor} flex items-center justify-center overflow-hidden`}>
+        {project.imageUrl ? (
+          <img src={project.imageUrl} alt={project.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+        ) : (
+          <>
+            <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.05)_10px,rgba(255,255,255,0.05)_20px)]" />
+            <span className="text-white/90 font-bold text-xl tracking-tight z-10 px-4 text-center leading-tight">
+              {project.title}
+            </span>
+          </>
+        )}
       </div>
       <div className="p-5 space-y-3">
         <h3 className={`font-semibold text-base ${isDark ? "text-white" : "text-gray-900"}`}>{project.title}</h3>

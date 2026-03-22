@@ -6,6 +6,7 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
   imageColor: string;
+  imageUrl?: string;
   featured?: boolean;
   size?: "large" | "medium" | "small";
 }
@@ -17,6 +18,8 @@ export interface Experience {
   duration: string;
   description: string[];
   type: "work" | "training" | "education";
+  certificatePath?: string;
+  certificateImage?: string;
 }
 
 export interface Certificate {

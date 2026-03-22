@@ -119,26 +119,22 @@ export function CertificationsSection() {
               }`}
             >
               {/* Certificate Banner */}
-              <div className={`relative h-36 bg-gradient-to-br ${cert.gradient} overflow-hidden`}>
-                {/* Pattern overlay */}
-                <div className="absolute inset-0 opacity-20"
+              <div className={`relative h-44 bg-gradient-to-br ${cert.gradient} overflow-hidden`}>
+                {/* Image background rendering the certificate png directly */}
+                <img 
+                  src={cert.pdfPath.replace('.pdf', '.png')} 
+                  alt={cert.title} 
+                  className="w-full h-full object-cover object-top opacity-95 group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Pattern overlay for subtle styling on top */}
+                <div className="absolute inset-0 opacity-10 mix-blend-overlay"
                   style={{
                     backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255,255,255,0.08) 8px, rgba(255,255,255,0.08) 16px)"
                   }}
                 />
-                {/* Decorative circles */}
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-white/10" />
-                <div className="absolute -top-4 -left-4 w-16 h-16 rounded-full bg-white/10" />
-                {/* Certificate icon */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <Award size={40} className="text-white/90 mx-auto drop-shadow-lg" />
-                    <p className="text-white/80 text-xs font-semibold mt-2 tracking-widest uppercase">{cert.issuer}</p>
-                  </div>
-                </div>
                 {/* View badge */}
                 <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-200 transform group-hover:scale-100 scale-90">
-                  <div className="flex items-center gap-1 px-2.5 py-1 bg-black/40 backdrop-blur-sm rounded-lg text-white text-xs font-medium border border-white/20">
+                  <div className="flex items-center gap-1 px-2.5 py-1 bg-black/60 backdrop-blur-md rounded-lg text-white text-xs font-medium border border-white/20">
                     <ZoomIn size={11} /> View
                   </div>
                 </div>
