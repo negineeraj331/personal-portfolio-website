@@ -91,12 +91,6 @@ export function AchievementsSection() {
            if (data && !data.error) setLeetcodeStats(data);
         }
 
-        // Fetch GeeksForGeeks Stats (attempting public community wrapper)
-        const gfgRes = await fetch("https://geeks-for-geeks-stats-api.vercel.app/?userName=negineeuip5").catch(() => null);
-        if (gfgRes && gfgRes.ok) {
-           const data = await gfgRes.json();
-           if (!data.error) setGfgStats(data);
-        }
       } catch (err) {
         console.error("Failed to fetch live stats", err);
       } finally {
@@ -322,24 +316,24 @@ export function AchievementsSection() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <InternalStatCard 
                 icon={<Code2 size={18} />} 
-                value={gfgStats?.totalProblemsSolved || "200+"} 
+                value={"21"} 
                 label="Problems Solved" 
                 valueColor="text-[#00E5FF]" 
               />
               <InternalStatCard 
                 icon={<Star size={18} />} 
-                value={gfgStats?.codingScore || "700+"} 
+                value={"51"} 
                 label="Coding Score" 
               />
               <InternalStatCard 
                 icon={<Flame size={18} />} 
-                value={gfgStats?.instituteRank || "Top 5%"} 
+                value={"11,139"} 
                 label="Institute Rank" 
               />
               <InternalStatCard 
                 icon={<Activity size={18} />} 
-                value={gfgStats?.schoolRank || "Notable"} 
-                label="Global Rank" 
+                value={"Active"} 
+                label="Status" 
               />
             </div>
           </motion.div>
