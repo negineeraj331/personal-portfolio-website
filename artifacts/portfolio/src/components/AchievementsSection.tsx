@@ -84,9 +84,12 @@ export function AchievementsSection() {
           }
         }
         
-        // Fetch LeetCode Stats
-        const lcRes = await fetch("https://leetcode-stats-api.herokuapp.com/BCfKcjIUL2");
-        if (lcRes.ok) setLeetcodeStats(await lcRes.json());
+        // Fetch LeetCode Stats (Using stable Faisalshohag API)
+        const lcRes = await fetch("https://leetcode-api-faisalshohag.vercel.app/BCfKcjIUL2").catch(() => null);
+        if (lcRes && lcRes.ok) {
+           const data = await lcRes.json();
+           if (data && !data.error) setLeetcodeStats(data);
+        }
 
         // Fetch GeeksForGeeks Stats (attempting public community wrapper)
         const gfgRes = await fetch("https://geeks-for-geeks-stats-api.vercel.app/?userName=negineeuip5").catch(() => null);
@@ -163,7 +166,7 @@ export function AchievementsSection() {
                 <div className="grid grid-cols-3 gap-4">
                   <InternalStatCard 
                     icon={<Code2 size={18} />} 
-                    value={leetcodeStats?.totalSolved || "350+"} 
+                    value={leetcodeStats?.totalSolved ?? "350+"} 
                     label="Total Solved" 
                     valueColor="text-[#00E5FF]" 
                   />
@@ -174,7 +177,7 @@ export function AchievementsSection() {
                   />
                   <InternalStatCard 
                     icon={<Users size={18} />} 
-                    value={leetcodeStats?.reputation || 0} 
+                    value={leetcodeStats?.reputation ?? 0} 
                     label="Reputation" 
                   />
                 </div>
@@ -183,12 +186,14 @@ export function AchievementsSection() {
                 <div className="grid grid-cols-2 gap-4">
                   <InternalStatCard 
                     icon={<Flame size={18} />} 
-                    value={leetcodeStats?.contributionPoints || "-"} 
+                    value={leetcodeStats?.contributionPoint ?? "-"} 
                     label="Contributions" 
                   />
                   <InternalStatCard 
                     icon={<Activity size={18} />} 
-                    value={leetcodeStats?.message === "success" ? `${leetcodeStats.acceptanceRate}%` : "87.89%"} 
+                    value={leetcodeStats?.matchedUserStats ? 
+                      ((leetcodeStats.matchedUserStats.acSubmissionNum[0].submissions / leetcodeStats.matchedUserStats.totalSubmissionNum[0].submissions) * 100).toFixed(2) + "%" 
+                      : "87.89%"} 
                     label="Acceptance" 
                   />
                 </div>
@@ -197,17 +202,17 @@ export function AchievementsSection() {
                 <div className="pt-6 pb-2 flex justify-around">
                   <ProgressRing 
                     radius={45} stroke={6} 
-                    progress={leetcodeStats?.easySolved || 87} total={leetcodeStats?.totalEasy || 830} 
+                    progress={leetcodeStats?.easySolved ?? 87} total={leetcodeStats?.totalEasy ?? 830} 
                     color="#00E5FF" label="Easy" 
                   />
                   <ProgressRing 
                     radius={45} stroke={6} 
-                    progress={leetcodeStats?.mediumSolved || 93} total={leetcodeStats?.totalMedium || 1726} 
+                    progress={leetcodeStats?.mediumSolved ?? 93} total={leetcodeStats?.totalMedium ?? 1726} 
                     color="#FFB800" label="Medium" 
                   />
                   <ProgressRing 
                     radius={45} stroke={6} 
-                    progress={leetcodeStats?.hardSolved || 8} total={leetcodeStats?.totalHard || 733} 
+                    progress={leetcodeStats?.hardSolved ?? 8} total={leetcodeStats?.totalHard ?? 733} 
                     color="#FF3333" label="Hard" 
                   />
                 </div>
